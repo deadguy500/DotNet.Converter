@@ -1,1 +1,1 @@
-"# DotNet.Converter" 
+# DotNet.Converter
