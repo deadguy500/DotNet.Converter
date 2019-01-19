@@ -1,0 +1,37 @@
+﻿@model  Converter.Web.Models.PdfMergeModel
+
+@{
+    ViewBag.Title = "Merge PDF";
+}
+
+<h2>MERGE PDF</h2>
+
+<hr />
+
+@using (Html.BeginForm("Index", "Merge", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @for (int ii = 0; ii < Model.NumberOfFiles; ii++)
+        {
+            <div class="form-group">
+                <label class="control-label col-md-2">
+                    PDF @(ii + 1):
+                </label>
+                <div class="col-md-10">
+                    <input type="file" name="PdfData@(ii)" id="PdfData@(ii)" />
+                </div>
+            </div>
+        }
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

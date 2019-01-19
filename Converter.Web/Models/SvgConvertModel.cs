@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using Converter.Web.Types;
+using System;
 
 namespace Converter.Web.Models
 {
-
     [Serializable]
-    public class SvgModel
+    public class SvgConvertModel
     {
-        public int Format { get; set; }
+        public FormatType Format { get; set; }
 
         public int NumberOfFiles { get; set; }
 

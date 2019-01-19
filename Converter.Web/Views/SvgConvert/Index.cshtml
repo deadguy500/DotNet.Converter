@@ -1,0 +1,68 @@
+﻿@model  Converter.Web.Models.SvgConvertModel
+
+@{
+    ViewBag.Title = "SVG To PNG/PDF";
+}
+
+<h2>SVG TO PNG/PNG</h2>
+
+<hr />
+
+@using (Html.BeginForm("Index", "SvgConvert", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @for (int ii = 0; ii < Model.NumberOfFiles; ii++)
+        {
+            <div class="form-group">
+                <label class="control-label col-md-2">
+                    Layer @(ii + 1):
+                </label>
+                <div class="col-md-10">
+                    <input type="file" name="ImageData@(ii)" id="ImageData@(ii)" />
+                </div>
+            </div>
+        }
+
+
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                Format:
+            </label>
+            <div class="col-md-10">
+                <span>@Html.RadioButtonFor(m => m.Format, Converter.Web.Types.FormatType.PNG)</span><span>PNG</span>
+
+                <span>@Html.RadioButtonFor(m => m.Format, Converter.Web.Types.FormatType.PDF)</span><span>PDF</span>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                Height:
+            </label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Height)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                Width:
+            </label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Width)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

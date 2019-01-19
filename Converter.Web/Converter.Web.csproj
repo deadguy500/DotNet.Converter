@@ -133,10 +133,16 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MergeController.cs" />
+    <Compile Include="Controllers\SvgConvertController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\SvgModel.cs" />
+    <Compile Include="Helpers\CommonHelper.cs" />
+    <Compile Include="Models\ControllerItemModel.cs" />
+    <Compile Include="Models\HomeModel.cs" />
+    <Compile Include="Models\PdfMergeModel.cs" />
+    <Compile Include="Models\SvgConvertModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Types\FormatType.cs" />
   </ItemGroup>
@@ -175,6 +181,8 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Merge\Index.cshtml" />
+    <Content Include="Views\SvgConvert\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
