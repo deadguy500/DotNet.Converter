@@ -130,6 +130,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MergeController.cs" />
+    <Compile Include="Controllers\MultiMergeController.cs" />
     <Compile Include="Controllers\SvgConvertController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -182,6 +183,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Merge\Index.cshtml" />
     <Content Include="Views\SvgConvert\Index.cshtml" />
+    <Content Include="Views\MultiMerge\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

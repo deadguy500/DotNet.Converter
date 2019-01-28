@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Web;
@@ -55,6 +57,53 @@ namespace Converter.Web.Helpers
             }
 
             return outputStringBuilder.ToString();
+        }
+
+        public static byte[] GetMergePdf(List<byte[]> pdfData)
+        {
+            var document = new Document();
+
+            byte[] pdfBytes;
+
+            using (var memoryStream = new MemoryStream())
+            {
+                var writer = new PdfCopy(document, memoryStream);
+
+                if (writer == null)
+                {
+                    return null;
+                }
+
+                document.Open();
+
+                foreach (var file in pdfData)
+                {
+                    var reader = new PdfReader(file);
+                    reader.ConsolidateNamedDestinations();
+
+                    for (int i = 1; i <= reader.NumberOfPages; i++)
+                    {
+                        var page = writer.GetImportedPage(reader, i);
+                        writer.AddPage(page);
+                    }
+
+                    var form = reader.AcroForm;
+
+                    if (form != null)
+                    {
+                        writer.AddDocument(reader);
+                    }
+
+                    reader.Close();
+                }
+
+                writer.Close();
+                document.Close();
+
+                pdfBytes = memoryStream.ToArray();
+            }
+
+            return pdfBytes;
         }
     }
 }
